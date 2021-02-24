@@ -11,6 +11,7 @@ public class Tweet {
 
     public String body;
     public String createdAt;
+    public String timeStamp;
     public User user;
     public long id;
 
@@ -18,6 +19,7 @@ public class Tweet {
         Tweet tweet = new Tweet();
         tweet.body = jsonObject.getString("text");
         tweet.createdAt = jsonObject.getString("created_at");
+        tweet.timeStamp = TimeFormatter.getTimeDifference(jsonObject.getString("created_at"));
         tweet.id = jsonObject.getLong("id");
         tweet.user =  User.fromJson(jsonObject.getJSONObject("user"));
 
